@@ -11,6 +11,7 @@ import java.util.Scanner;
  *
  * @author Gia Bao
  */
+//cách này là dùng Calendar còn dùng hàm bth vẩn tính được nha
 public class ThoiGianChuyenDi {
 
     static Scanner sc = new Scanner(System.in);
@@ -70,16 +71,22 @@ public class ThoiGianChuyenDi {
                 System.out.println("Vui lòng nhập đúng định dạng.");
             }
         }
-
-        if (thoiGianKetThuc.before(thoiGianBatDau)) {
-            thoiGianKetThuc.add(Calendar.DAY_OF_MONTH, 1);
+        // Kiểm tra xem thời gian kết thúc có trước thời gian bắt đầu không
+        if (thoiGianKetThuc.before(thoiGianBatDau)) {//nếu kết thúc 
+            thoiGianKetThuc.add(Calendar.DAY_OF_MONTH, 1);//Thêm 1 ngày 
         }
+        //thời gian di chuyển
+        //Thời gian di chuyển tình là = thời gian kết thúc  - Thoi gian bắt đầu mà tính theo milliseconds nên phải dùng biến long nha mấy ní
+        long thoiGianChuyenDiMillis = thoiGianKetThuc.getTimeInMillis() - thoiGianBatDau.getTimeInMillis(); //Biến long nó rộng hơn biến int (int max là 2 tỷ thôi)
 
-        long thoiGianChuyenDiMillis  = thoiGianKetThuc.getTimeInMillis() - thoiGianBatDau.getTimeInMillis();
-        long thoiGianChuyenDiPhut  = thoiGianChuyenDiMillis  / (1000 * 60);
+        //hàm này là để chuyển sang phút nè 
+        //Chia cho 10000 là nó sẻ về giây rùi mình nhân cho 60 để nó về phút nha
+        long thoiGianChuyenDiPhut = thoiGianChuyenDiMillis / (1000 * 60);
 
-        long gioChuyenDi = thoiGianChuyenDiPhut  / 60;
-        long phutChuyenDi = thoiGianChuyenDiPhut  % 60;
+        // Tính số giờ chuyến đi bằng cách chia tổng số phút cho 60
+        long gioChuyenDi = thoiGianChuyenDiPhut / 60;
+        // Tính số phút còn lại của chuyến đi bằng cách lấy phần dư của tổng số phút khi chia cho 60
+        long phutChuyenDi = thoiGianChuyenDiPhut % 60;
 
         System.out.printf("Tổng thời gian chuyến đi: %d giờ %d phút\n", gioChuyenDi, phutChuyenDi);
 
