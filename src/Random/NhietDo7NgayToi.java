@@ -14,16 +14,15 @@ public class NhietDo7NgayToi {
 
     public static void main(String[] args) {
         Random random = new Random();
-        int soNgay = 7;
-        int nhietDoMin = 15;
-        int nhietDoMax = 30;
-
-        System.out.printf("| %-10s | %-15s |\n", "Ngày", "Nhiệt độ (°C)");
-        System.out.println("|------------|-----------------|");
-
-        for (int i = 1; i <= soNgay; i++) {
-            int nhietDo = random.nextInt(nhietDoMax - nhietDoMin + 1) + nhietDoMin;
-            System.out.printf("| Ngày %2d    | %-15d |\n", i, nhietDo);
+        int SoNgay = 7;
+        int NhietDoMin = 15;
+        int NhietDoMax = 30;
+        System.out.println("|Ngày  |  Nhiệt độ(°C)  |");
+        System.out.println("|------|----------------|");
+        for (int i = 1; i <= SoNgay; i++) {
+            int NhietDo = random.nextInt(NhietDoMax - NhietDoMin + 1) + NhietDoMin;//tính nhiệt độ trong ngày ,bỏ hàm random vào for để random được nhìu giá trị nhiệt độ nè
+            System.out.printf("|Ngày%2d|    %-12d|\n", i, NhietDo);//%-12d kiểu như là nó chỉnh độ rộng của font printf
         }
+
     }
 }
