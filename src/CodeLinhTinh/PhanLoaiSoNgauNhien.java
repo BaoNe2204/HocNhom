@@ -21,7 +21,7 @@ public class PhanLoaiSoNgauNhien {
 
         // Sinh 10 số ngẫu nhiên từ 1 đến 100
         for (int i = 0; i < 10; i++) {
-            int so = random.nextInt(100) + 1; 
+            int so = random.nextInt(100) + 1; //chạy tới 99 thôi nên phải + 1 cho đủ 100
             soNgauNhien.add(so); //thêm biến số vô list nè
         }
 
