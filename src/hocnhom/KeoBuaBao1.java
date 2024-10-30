@@ -39,6 +39,7 @@ public class KeoBuaBao1 {
 
         }
         sc.close(); // Đóng scanner khi không sử dụng
+        //Hello
 
     }
 
