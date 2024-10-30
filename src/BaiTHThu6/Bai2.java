@@ -136,6 +136,7 @@ public class Bai2 {
                 System.out.println("Lựa chọn không hợp lệ. Vui lòng thử lại.");
                 batDau();
                 break;
+                //test
         }
         return 0;
     }
