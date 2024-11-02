@@ -7,6 +7,17 @@ import java.awt.event.ActionListener;
 
 public class ChuyenDoiHeCoSo extends JFrame {
 
+    // Color constants
+    private static final Color BACKGROUND_COLOR = new Color(240, 248, 255); // Màu nền cho comboBox
+    private static final Color PANEL_BACKGROUND_COLOR = Color.WHITE; // Màu nền cho panel
+    private static final Color BUTTON_COLOR = new Color(70, 130, 180); // Màu nền cho nút
+    private static final Color TEXT_FIELD_BORDER_COLOR = new Color(100, 149, 237); // Màu viền cho trường nhập
+
+    // Font constants
+    private static final Font FONT_PLAIN_18 = new Font("Arial", Font.PLAIN, 18);
+    private static final Font FONT_BOLD_16 = new Font("Arial", Font.BOLD, 16);
+    private static final Font FONT_BOLD_24 = new Font("Arial", Font.BOLD, 24);
+
     private JTextField nhapSoField; // Trường nhập số từ người dùng
     private JTextField ketQuaField; // Trường hiển thị kết quả chuyển đổi
     private JComboBox<Integer> heCoSoTuCombo; // ComboBox chọn hệ cơ số từ
@@ -41,7 +52,7 @@ public class ChuyenDoiHeCoSo extends JFrame {
         JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout()); // Sử dụng layout GridBag
         panel.setBorder(BorderFactory.createTitledBorder("Nhập Thông Tin")); // Đặt tiêu đề cho panel
-        panel.setBackground(Color.WHITE); // Màu nền cho panel
+        panel.setBackground(PANEL_BACKGROUND_COLOR); // Màu nền cho panel
         panel.setPreferredSize(new Dimension(500, 300)); // Kích thước ưu tiên cho panel
 
         GridBagConstraints gbc = new GridBagConstraints(); // Constraints cho GridBagLayout
@@ -54,8 +65,8 @@ public class ChuyenDoiHeCoSo extends JFrame {
         panel.add(new JLabel("Nhập số:"), gbc); // Thêm nhãn
 
         nhapSoField = new JTextField(15); // Trường nhập số
-        nhapSoField.setFont(new Font("Arial", Font.PLAIN, 18)); // Font cho trường nhập
-        nhapSoField.setBorder(BorderFactory.createLineBorder(new Color(100, 149, 237), 1)); // Viền cho trường nhập
+        nhapSoField.setFont(FONT_PLAIN_18); // Sử dụng font constant
+        nhapSoField.setBorder(BorderFactory.createLineBorder(TEXT_FIELD_BORDER_COLOR, 1)); // Viền cho trường nhập
         gbc.gridx = 1;
         panel.add(nhapSoField, gbc); // Thêm trường nhập số
 
@@ -65,8 +76,8 @@ public class ChuyenDoiHeCoSo extends JFrame {
         panel.add(new JLabel("Hệ cơ số từ:"), gbc); // Thêm nhãn
 
         heCoSoTuCombo = new JComboBox<>(new Integer[]{2, 8, 10, 16}); // ComboBox cho hệ cơ số từ
-        heCoSoTuCombo.setFont(new Font("Arial", Font.PLAIN, 18));
-        heCoSoTuCombo.setBackground(new Color(240, 248, 255)); // Màu nền cho comboBox
+        heCoSoTuCombo.setFont(FONT_PLAIN_18); // Sử dụng font constant
+        heCoSoTuCombo.setBackground(BACKGROUND_COLOR); // Màu nền cho comboBox
         gbc.gridx = 1;
         panel.add(heCoSoTuCombo, gbc); // Thêm comboBox
 
@@ -76,8 +87,8 @@ public class ChuyenDoiHeCoSo extends JFrame {
         panel.add(new JLabel("Hệ cơ số đến:"), gbc); // Thêm nhãn
 
         heCoSoDenCombo = new JComboBox<>(new Integer[]{2, 8, 10, 16}); // ComboBox cho hệ cơ số đến
-        heCoSoDenCombo.setFont(new Font("Arial", Font.PLAIN, 18));
-        heCoSoDenCombo.setBackground(new Color(240, 248, 255));
+        heCoSoDenCombo.setFont(FONT_PLAIN_18); // Sử dụng font constant
+        heCoSoDenCombo.setBackground(BACKGROUND_COLOR); // Màu nền cho comboBox
         gbc.gridx = 1;
         panel.add(heCoSoDenCombo, gbc); // Thêm comboBox
 
@@ -97,11 +108,11 @@ public class ChuyenDoiHeCoSo extends JFrame {
                 JOptionPane.showMessageDialog(ChuyenDoiHeCoSo.this, ex.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
             }
         });
-        nutXemKetQua.setBackground(new Color(70, 130, 180)); // Màu nền cho nút
+        nutXemKetQua.setBackground(BUTTON_COLOR); // Màu nền cho nút
         nutXemKetQua.setForeground(Color.WHITE); // Màu chữ cho nút
         nutXemKetQua.setFocusPainted(false); // Không hiển thị viền khi nút được chọn
         nutXemKetQua.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20)); // Viền cho nút
-        nutXemKetQua.setFont(new Font("Arial", Font.BOLD, 16)); // Font cho nút
+        nutXemKetQua.setFont(FONT_BOLD_16); // Sử dụng font constant
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.gridwidth = 2; // Chiếm 2 cột
@@ -114,22 +125,22 @@ public class ChuyenDoiHeCoSo extends JFrame {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
         panel.setBorder(BorderFactory.createTitledBorder("Kết Quả")); // Đặt tiêu đề cho panel
-        panel.setBackground(Color.WHITE);
+        panel.setBackground(PANEL_BACKGROUND_COLOR);
         panel.setPreferredSize(new Dimension(500, 300));
 
         ketQuaField = new JTextField(); // Trường hiển thị kết quả
         ketQuaField.setEditable(false); // Không cho phép chỉnh sửa
-        ketQuaField.setFont(new Font("Arial", Font.BOLD, 24)); // Font cho kết quả
+        ketQuaField.setFont(FONT_BOLD_24); // Sử dụng font constant
         ketQuaField.setHorizontalAlignment(SwingConstants.CENTER); // Căn giữa kết quả
         panel.add(ketQuaField, BorderLayout.CENTER); // Thêm trường kết quả vào giữa panel
 
         // Nút quay lại
         JButton nutQuayLai = new JButton("Quay lại");
         nutQuayLai.addActionListener(e -> cardLayout.show(mainPanel, "PanelNhapLieu")); // Quay lại panel nhập liệu
-        nutQuayLai.setBackground(new Color(70, 130, 180)); // Màu nền cho nút
+        nutQuayLai.setBackground(BUTTON_COLOR); // Màu nền cho nút
         nutQuayLai.setForeground(Color.WHITE); // Màu chữ cho nút
         nutQuayLai.setFocusPainted(false); // Không hiển thị viền khi nút được chọn
-        nutQuayLai.setFont(new Font("Arial", Font.BOLD, 16)); // Font cho nút
+        nutQuayLai.setFont(FONT_BOLD_16); // Sử dụng font constant
         panel.add(nutQuayLai, BorderLayout.SOUTH); // Thêm nút quay lại vào dưới panel
 
         return panel; // Trả về panel kết quả
